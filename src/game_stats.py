@@ -49,9 +49,9 @@ class GameStats:
             self._location_stats[self._location] = { "items": [], "deaths": 0, "chickens": 0, "merc_deaths": 0, "failed_runs": 0 }
 
     def log_item_keep(self, item_name: str, send_message: bool, img: np.ndarray, ocr_text: str = '', expression: str = '', item_props: dict = {}):
-        filtered_substrings = [" POTION", " OF IDENTIFY", " OF TOWN PORTAL", " AMETHYST", " RUBY", " TOPAZ", " EMERALD", " SAPPHIRE", " DIAMOND"]
+        filtered_substrings = [" POTION", " OF IDENTIFY", " OF TOWN PORTAL", " AMETHYST", " RUBY", " TOPAZ", " EMERALD", " SAPPHIRE", " DIAMOND", "KEY OF "]
         filtered_matches = ["DIAMOND", "AMETHYST", "RUBY", "TOPAZ", "EMERALD", "SAPPHIRE", "ARROWS", "BOLTS",
-                            "CHIPPED SKULL", "FLAWED SKULL", "SKULL", "FLAWLESS SKULL", "PERFECT SKULL"]
+                            "CHIPPED SKULL", "FLAWED SKULL", "SKULL", "FLAWLESS SKULL", "PERFECT SKULL", "RING", "JEWEL", "AMULET"]
         skip_log = any(substring in item_name for substring in filtered_substrings) or any(match == item_name.strip() for match in filtered_matches)
         if self._location is not None and not skip_log:
             Logger.debug(f"Stashed and logged: {item_name}")
